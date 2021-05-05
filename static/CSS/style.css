@@ -1,0 +1,54 @@
+* {
+    font-family: 'Changa', sans-serif;
+    box-sizing: border-box;
+    background-color: #0B0033;
+    color: #EAF27C;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20rem;
+}
+
+h1 {
+    margin-left: 7rem;
+}
+
+#mainContainer {
+    background-color: #370031;
+    width: 22rem;
+    height: 20rem;
+}
+
+.sectionHeading {
+    background-color: #370031;
+}
+
+#subContainer {
+    margin-left: 5rem;
+    background-color: #370031;
+}
+
+#expenseTable {
+    display: flex;
+    overflow-y: scroll;
+    height: 20rem;
+    width: 22.5rem;
+}
+
+.tableRow {
+    padding-right: 15px;
+}
+
+#titleContainer {
+    display: flex;
+}
+
+#titleContainer > img {
+    margin-left: 2rem;
+}
+
+
+
+
