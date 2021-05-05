@@ -60,7 +60,7 @@ class Expense:
         
         self._ID = ID
         self._Category = Category
-        self._Amount = float(Amount)
+        self._Amount = format(Amount, '2.f')
         self._Date = Date
     
 
