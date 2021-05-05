@@ -17,8 +17,10 @@ h1 {
 
 #mainContainer {
     background-color: #370031;
-    width: 22rem;
-    height: 20rem;
+    width: 26rem;
+    height: 24rem;
+    display: flex;
+    justify-content: center;
 }
 
 .sectionHeading {
@@ -30,11 +32,16 @@ h1 {
     background-color: #370031;
 }
 
+.tableHeading {
+    margin-left: 2rem;
+}
+
 #expenseTable {
     display: flex;
     overflow-y: scroll;
-    height: 20rem;
+    height: 15rem;
     width: 22.5rem;
+    margin-left: 2rem;
 }
 
 .tableRow {
@@ -43,10 +50,30 @@ h1 {
 
 #titleContainer {
     display: flex;
+    margin-left: 8rem;
+    justify-content: space-around;
+    width: 8rem;
 }
 
 #titleContainer > img {
     margin-left: 2rem;
+}
+
+#appTitle {
+    margin-right: 4.5rem;
+}
+
+#catInvert {
+    transform: scaleX(-1);
+}
+
+#radios {
+    margin-right: 2.5rem;
+    background-color: #370031;
+}
+
+.radioLabel {
+    background-color: #370031;
 }
 
 

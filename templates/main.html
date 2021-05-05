@@ -9,18 +9,20 @@
             <input name="budget" placeholder="Budget amount"><br>
 
             <h2 class="sectionHeading">Add expense</h2>
+            
+            <div id="radios">
+                <input type="radio" name="category" value="school">
+                <label class="radioLabel" for="school">School</label>
 
-            <input type="radio" name="category" value="school">
-            <label for="school">School</label>
+                <input type="radio" name="category" value="food">
+                <label class="radioLabel" for="food">Food</label>
 
-            <input type="radio" name="category" value="food">
-            <label for="food">Food</label>
+                <input  type="radio" name="category" value="health">
+                <label class="radioLabel" for="health">Health</label>
 
-            <input  type="radio" name="category" value="health">
-            <label for="health">Health</label>
-
-            <input type="radio" name="category" value="family">
-            <label for="family">Family</label>
+                <input type="radio" name="category" value="family">
+                <label class="radioLabel" for="family">Family</label>
+            </div>
 
             <br>
             <input name="amount", placeholder="Amount"><br> <br>
@@ -30,7 +32,7 @@
 </form>
 
 
-<h2> All expenses </h2>
+<h2 class="tableHeading"> All expenses </h2>
 <table id="expenseTable">
     {% for expense in expenses["expenses"] %}
     <tr>
