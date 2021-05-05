@@ -16,6 +16,8 @@ class ExpenseManager:
 
 
     def get_expenses(self):
+        """Return a list of expenses (in dict) that stored inside the Expense Maanger """
+
         expenses_list = []
         for (key, value) in self._expenses.items():
             expenses_list.append(value)

@@ -5,16 +5,52 @@
 <h1>Home page </h1>
 
 <form method="POST">
-    <p>Add expense</p>
-    <!-- <input name="expense_id", placeholder="Expense ID", type="number"><br> -->
-    <input name="category" , placeholder="Category"><br>
+    <h2>Add expense</h2>
+
+    <input type="radio" name="category" value="school">
+    <label for="school">School</label>
+
+    <input type="radio" name="category" value="food">
+    <label for="food">Food</label>
+
+    <input type="radio" name="category" value="health">
+    <label for="health">Health</label>
+
+    <input type="radio" name="category" value="family">
+    <label for="family">Family</label>
+
+    <br>
     <input name="amount" , placeholder="Amount"><br> <br>
     <input type="submit">
 
-    <p>Add balance</p>
+
+    <h2>Update balance</h2>
     <input name="balance" placeholder="Balance amount"><br>
 
-    <p>Add budget</p>
+    <h2>Update budget</h2>
     <input name="budget" placeholder="Budget amount"><br>
 </form>
+
+<br> <br>
+
+<h2> All expenses </h2>
+<table>
+    {% for expense in expenses["expenses"] %}
+    <tr>
+        <td>{{expense.ID}}</td>
+        <td>{{expense.Category}}</td>
+        <td>${{expense.Amount}}</td>
+        <td>{{expense.Date.strftime("%Y-%m-%d")}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+<h2> Balance </h2>
+<p> {{balanceBudget["balance"]}} </p>
+
+<h2> Budget </h2>
+<p> {{balanceBudget["budget"]}} </p>
+
+
 {% endblock %}
