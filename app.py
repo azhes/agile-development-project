@@ -77,6 +77,7 @@ def expense():
         EM.add_expense(expense)
 
         EM.to_csv(expense_csv)
+    balanceBudget()
     return render_template("main.html", expenses=list_all_expenses(), balanceBudget=from_csv(balance_csv))
 
 

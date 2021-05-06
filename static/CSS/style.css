@@ -1,0 +1,81 @@
+* {
+    font-family: 'Changa', sans-serif;
+    box-sizing: border-box;
+    background-color: #0B0033;
+    color: #EAF27C;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20rem;
+}
+
+h1 {
+    margin-left: 7rem;
+}
+
+#mainContainer {
+    background-color: #370031;
+    width: 26rem;
+    height: 24rem;
+    display: flex;
+    justify-content: center;
+}
+
+.sectionHeading {
+    background-color: #370031;
+}
+
+#subContainer {
+    margin-left: 5rem;
+    background-color: #370031;
+}
+
+.tableHeading {
+    margin-left: 2rem;
+}
+
+#expenseTable {
+    display: flex;
+    overflow-y: scroll;
+    height: 15rem;
+    width: 22.5rem;
+    margin-left: 2rem;
+}
+
+.tableRow {
+    padding-right: 15px;
+}
+
+#titleContainer {
+    display: flex;
+    margin-left: 8rem;
+    justify-content: space-around;
+    width: 8rem;
+}
+
+#titleContainer > img {
+    margin-left: 2rem;
+}
+
+#appTitle {
+    margin-right: 4.5rem;
+}
+
+#catInvert {
+    transform: scaleX(-1);
+}
+
+#radios {
+    margin-right: 2.5rem;
+    background-color: #370031;
+}
+
+.radioLabel {
+    background-color: #370031;
+}
+
+
+
+
