@@ -60,7 +60,7 @@ class Expense:
         
         self._ID = ID
         self._Category = Category
-        self._Amount = float(Amount)
+        self._Amount = format(float(Amount), ".2f")
         self._Date = Date
     
 
@@ -95,7 +95,7 @@ class Expense:
         expense_dict["ID"] = self.ID
         expense_dict["Category"] = self.Category
         expense_dict["Amount"] = self.Amount
-        expense_dict["Date"] = self.Date
+        expense_dict["Date"] = self.Date.strftime("%Y-%m-%d")
 
         return expense_dict
 

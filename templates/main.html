@@ -5,11 +5,11 @@
 <form method="POST">
     <div id="mainContainer">
         <div id="subContainer">
-            <h2 class="sectionHeading">Add budget</h2>
+            <h2 class="sectionHeading">Update Budget and Balance</h2>
             <input name="budget" placeholder="Budget amount"><br>
             <input name="balance" placeholder="Balance amount"><br>
 
-            <h2 class="sectionHeading">Add expense</h2>
+            <h2 class="sectionHeading">Add Expense</h2>
 
             <div id="radios">
                 <input type="radio" name="category" value="School">
@@ -46,15 +46,18 @@
         <td class="tableRow" id="expenseID">{{expense.ID}}</td>
         <td class="tableRow" id="expenseCategory">{{expense.Category}}</td>
         <td class="tableRow" id="expenseAmount">${{expense.Amount}}</td>
-        <td class="tableRow" id="expenseDate">{{expense.Date.strftime("%Y-%m-%d")}}</td>
+        <td class="tableRow" id="expenseDate">{{expense.Date}}</td>
+        <td>
+            <form action="http://localhost:5000/delete/{{expense.ID}}" method="GET"> <input name="ID" type="submit" value="DELETE"> </form>
+        </td>
     </tr>
     {% endfor %}
 </table>
 <h2> Balance </h2>
-<p> {{balanceBudget["balance"]}} </p>
+<p> ${{balanceBudget["balance"]}} </p>
 
 <h2> Budget </h2>
-<p> {{balanceBudget["budget"]}} </p>
+<p> ${{balanceBudget["budget"]}} </p>
 
 
 {% endblock %}

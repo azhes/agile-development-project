@@ -15,6 +15,11 @@ class ExpenseManager:
         self._expenses[expense.ID] = expense
 
 
+    def del_expense(self, expenseID):
+        """ Delete the expense from Expense Manager based on the expense ID"""
+        self._expenses.pop(expenseID)
+
+
     def get_expenses(self):
         """Return a list of expenses (in dict) that stored inside the Expense Maanger """
 
@@ -46,7 +51,17 @@ class ExpenseManager:
             for expense in self._expenses.values():
                 writer.writerow(expense.to_dict())
 
-    
+
+    def override_to_csv(self, csv_file):
+        """Write to a csv file"""
+        fields = Expense.get_serializable_field_names()
+        with open(csv_file, "w", newline="") as f:
+            writer = csv.DictWriter(f, fields)
+            writer.writeheader()
+            for expense in self._expenses.values():
+                writer.writerow(expense.to_dict())
+
+
     def read_largest_id(self, csv_file):
         """Get largest id from csv_file
 
@@ -60,7 +75,12 @@ class ExpenseManager:
                 expense = Expense.create_from_dict(item)
                 id.append(expense.ID)
             id.sort(reverse=True)
-        return id[0]
+        # Check if the csv have no record at all
+        if len(id) == 0:
+            largest_ID = 0
+        else:
+            largest_ID = id[0]
+        return largest_ID
             
 
 
@@ -72,3 +92,5 @@ if __name__ == "__main__":
     print(EM.get_expenses())    
     print(EM.read_largest_id("expense.csv"))
 
+    # EM.del_expense(2)
+    # print(EM.get_expenses())    
