@@ -87,11 +87,22 @@ def expense():
     if category != "":
         # Store as a class Expense object
         EM = ExpenseManager()
-        Next_ID = EM.read_largest_id(expense_csv) + 1
+        Next_ID = EM.read_largest_id(expense_csv) + 1 # Assign the next ID#
         expense = Expense(Next_ID, category, amount)
+        
+        # Add the expense into the Expense Manager
         EM.add_expense(expense)
-
+        
+        # Deduct expense amount from balance
+        bal_dict=from_csv(balance_csv)
+        bal_dict["balance"] = float(bal_dict["balance"]) - float(expense.Amount)
+        
+        # Save expense
         EM.to_csv(expense_csv)
+
+        # Save balance, budget
+        add_to_csv(bal_dict["balance"], bal_dict["budget"])
+
     balanceBudget()
     return render_template("main.html", expenses=list_all_expenses(), balanceBudget=from_csv(balance_csv))
 

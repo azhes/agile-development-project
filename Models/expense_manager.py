@@ -82,8 +82,7 @@ class ExpenseManager:
             largest_ID = id[0]
         return largest_ID
             
-
-
+    
 ############################################
 if __name__ == "__main__":
     EM = ExpenseManager()
