@@ -66,3 +66,13 @@ def test_read_largest_id():
     # Checks if method exists
     assert hasattr(manager, "read_largest_id")
     
+
+def test_del_expense():
+    """
+    Tests for the del_expense method
+    """
+    manager = ExpenseManager()
+
+    # Checks if method exists
+    assert hasattr(manager, "del_expense")
+    

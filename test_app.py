@@ -10,4 +10,3 @@ def test_app_route():
     assert response.status_code == 200
 
 
-
