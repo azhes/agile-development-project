@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">    
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">        
+        <div class="top_section">
+            <div id=titleContainer>
+                <img id="catInvert" src="./Picture1.png" alt="thumbs up cat" width="100" height="100">
+                <h1 id="appTitle"> $p3nd1 </h1>
+            </div>
+            <div class="feature_container">
+                <form method="POST">
+                    <div id="mainContainer">
+                        <div id="subContainer">
+                            <div class="balance_container">
+                                <h2> Balance </h2>
+                                <p> {{balanceBudget["balance"]}} </p>
+                                <input name="budget" placeholder="Enter Your Budget"><br>
+                                <button name="button" ><i class="material-icons">pets</i></button>
+                            </div>
+                            <div class="budget_container">
+                                <h2> Budget </h2>
+                                <p> {{balanceBudget["budget"]}} </p>
+                                <input name="balance" placeholder="Enter Your Balance"><br>               
+                                <button name="button" ><i class="material-icons">pets</i></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    
+        <div class="left_section">
+            <h2 class="tableHeading"> All expenses </h2>
+            <div class="input_expense">
+                <form method="POST">
+                    <h2 class="sectionHeading">Add expense</h2>
+                    <div id="radios">
+                        <input type="radio" name="category" value="School">
+                        <label class="radioLabel" for="school">School</label>
+    
+                        <input type="radio" name="category" value="Food">
+                        <label class="radioLabel" for="food">Food</label>
+    
+                        <input type="radio" name="category" value="Health">
+                        <label class="radioLabel" for="health">Health</label>
+    
+                        <input type="radio" name="category" value="Family">
+                        <label class="radioLabel" for="family">Family</label>
+                    </div>
+                    <br>
+                        <input name="amount" , placeholder="Amount"><br> <br>
+                        <button name="button" ><i class="material-icons">pets</i></button>
+                </form>
+            </div>
+        
+            <div class="output_expense">
+                <table id="expenseTable">
+                    <tr>
+                        <th> ID </th>
+                        <th> Category </th>
+                        <th> Amount </th>
+                        <th> Date </th>
+                    </tr>
+                    {% for expense in expenses["expenses"] %}
+                    <tr>
+                        <td class="tableRow" id="expenseID">{{expense.ID}}</td>
+                        <td class="tableRow" id="expenseCategory">{{expense.Category}}</td>
+                        <td class="tableRow" id="expenseAmount">${{expense.Amount}}</td>
+                        <td class="tableRow" id="expenseDate">{{expense.Date}}</td>
+                        <td>
+                            <form action="http://localhost:5000/delete/{{expense.ID}}" method="GET"> 
+                            <button name="ID" type="submit" value="DELETE"><i class="material-icons">delete</button>
+                            </form>
+
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="right_section">
+            <h2>Analysis</h2>
+        </div>
+    </div>
+      
+</body>
+</html>

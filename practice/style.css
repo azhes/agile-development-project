@@ -2,6 +2,8 @@ body {
     font-family: 'Changa', sans-serif;
     box-sizing: border-box;
     margin: 0;
+    color:#03051b; 
+    background-color: #f9f6f3;
 }
 
 .container{
@@ -33,7 +35,7 @@ body {
 #subContainer{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background-color: #c58b48; 
+    background-color: #c58b48;
     border-radius: 25px;
     color: #fafafa;
     padding-left: 25px;
@@ -50,6 +52,10 @@ body {
     border-radius: 25px;
     margin: 50px 20px 0 20px;
     color: #fafafa;
+}
+
+#catInvert{
+    transform: rotate(-10deg);
 }
 
 #titleContainer {
@@ -69,71 +75,3 @@ button{
     color:#DC4B19;
     border-radius:4px;
 }
-
-
-
-
-/* h1 {
-    margin-left: 7rem;
-}
-
-#mainContainer {
-    background-color: #370031;
-    width: 26rem;
-    height: 24rem;
-    display: flex;
-    justify-content: center;
-}
-
-.sectionHeading {
-    background-color: #370031;
-}
-
-#subContainer {
-    margin-left: 5rem;
-    background-color: #370031;
-}
-
-.tableHeading {
-    margin-left: 2rem;
-}
-
-#expenseTable {
-    display: flex;
-    overflow-y: scroll;
-    height: 15rem;
-    width: 22.5rem;
-    margin-left: 2rem;
-}
-
-.tableRow {
-    padding-right: 15px;
-}
-
-#titleContainer {
-    display: flex;
-    margin-left: 8rem;
-    justify-content: space-around;
-    width: 8rem;
-}
-
-#titleContainer>img {
-    margin-left: 2rem;
-}
-
-#appTitle {
-    margin-right: 4.5rem;
-}
-
-#catInvert {
-    transform: scaleX(-1);
-}
-
-#radios {
-    margin-right: 2.5rem;
-    background-color: #370031;
-}
-
-.radioLabel {
-    background-color: #370031;
-} */
