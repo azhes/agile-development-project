@@ -2,6 +2,13 @@ body {
     font-family: 'Changa', sans-serif;
     box-sizing: border-box;
     margin: 0;
+    background-image: url(../images/cat-1507600_1920.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#appTitle {
+    color: white;
 }
 
 .container{
@@ -33,7 +40,7 @@ body {
 #subContainer{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background-color: #c58b48; 
+    background-color: rgba(184, 184, 184, 0.15); 
     border-radius: 25px;
     color: #fafafa;
     padding-left: 25px;
@@ -46,7 +53,7 @@ body {
 }
 
 .left_section, .right_section{
-    background-color: #1f4427;
+    background-color: rgba(177, 177, 177, 0.15); 
     border-radius: 25px;
     margin: 50px 20px 0 20px;
     color: #fafafa;
@@ -76,6 +83,8 @@ button{
 
 .expenseSection {
     margin-left: 20rem;
+    width: 23rem;
+    border-radius: 25px;
 }
 
 #expenseTable {
@@ -87,6 +96,12 @@ button{
 
 .analysisSection {
     margin-left: 25rem;
+}
+
+#titleContainer {
+    transform: scale(2);
+    margin-left: 15rem;
+    margin-top: 5rem;
 }
 
 
