@@ -74,6 +74,21 @@ button{
     transform: scaleX(-1);
 }
 
+.expenseSection {
+    margin-left: 20rem;
+}
+
+#expenseTable {
+    display: flex;
+    overflow-y: scroll;
+    height: 15rem;
+    width: 22.5rem;
+}
+
+.analysisSection {
+    margin-left: 25rem;
+}
+
 
 
 /* h1 {
@@ -101,13 +116,7 @@ button{
     margin-left: 2rem;
 }
 
-#expenseTable {
-    display: flex;
-    overflow-y: scroll;
-    height: 15rem;
-    width: 22.5rem;
-    margin-left: 2rem;
-}
+
 
 .tableRow {
     padding-right: 15px;
