@@ -70,6 +70,9 @@ button{
     border-radius:4px;
 }
 
+#catInvert {
+    transform: scaleX(-1);
+}
 
 
 
@@ -123,10 +126,6 @@ button{
 
 #appTitle {
     margin-right: 4.5rem;
-}
-
-#catInvert {
-    transform: scaleX(-1);
 }
 
 #radios {
