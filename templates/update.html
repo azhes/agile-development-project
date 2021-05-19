@@ -6,7 +6,7 @@
 <div class="input_expense" id="subContainer">
     <form action="http://localhost:5000/update/{{ID}}" method="POST">
         <h2 class="sectionHeading">Update Expense #{{ID}}</h2>
-        <div class="notification" style="background-color: white; color: red; border-radius: 8px; margin-right: 3rem">
+        <div class="notification" style="background-color: white; color: red; border-radius: 8px; margin-right: 2rem">
             {% with messages = get_flashed_messages() %}
                 {% if messages %} 
                     {% for message in messages %} 
@@ -38,10 +38,11 @@
         <input class="text-box" type="date" name="date", value={{date}}><br> <br>
         <input class="text-box" name="amount", value={{amount}}><br> <br>
         <button name="button"><i class="material-icons">pets</i></button>
-    </form>
-    <form action="http://localhost:5000" method="GET">
         <button id="cancelButton" name="button"><i class="material-icons">cancel</i></button>
     </form>
+    <!-- <form action="http://localhost:5000" method="GET">
+        <button id="cancelButton" name="button"><i class="material-icons">cancel</i></button>
+    </form> -->
 </div>
 
 <script>    
