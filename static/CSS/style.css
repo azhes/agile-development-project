@@ -76,10 +76,6 @@ button{
     border-radius:4px;
 }
 
-#catInvert {
-    transform: scaleX(-1);
-}
-
 .expenseSection {
     margin-left: 5rem;
     width: 23rem;
@@ -196,6 +192,7 @@ button{
 
     img {
         width:80vw;
+        height: 7.5rem;
     }
 
 
