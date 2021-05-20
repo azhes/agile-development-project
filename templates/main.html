@@ -33,22 +33,18 @@
             <h1 class="tableHeading"> Expenses </h1>
             <!-- Display error messages -->
             <div class="notification" style="background-color: white; color: red; border-radius: 8px; margin-right: 3rem">
-            {% with messages = get_flashed_messages() %}
-                {% if messages %} 
-                    {% for message in messages %} 
-                        <div class="alert alert-warning alert-dismissable" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
+                {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+                <div class="alert alert-warning alert-dismissable" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> {{ message }}
+                </div>
+                {% endfor %} {% endif %} {% endwith %}
             </div>
             <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
             <div class="input_expense">
-                <form action="http://localhost:5000/add" method="POST">
+                <!-- <form action="http://localhost:5000/add" method="POST"> -->
+                <form action="/add" method="POST">
                     <h2 class="sectionHeading">Add Expense</h2>
                     <div id="radios">
 
@@ -86,12 +82,12 @@
                         <td class="tableRow" id="expenseDate">{{expense.Date}}</td>
                         <td>
 
-                            <form action="http://localhost:5000/update/{{expense.ID}}" method="GET">
+                            <form action="/update/{{expense.ID}}" method="GET">
                                 <button name="ID" type="submit" value="UPDATE"><i class="material-icons">edit</button>
                             </form>
                         </td>
                         <td>
-                            <form action="http://localhost:5000/delete/{{expense.ID}}" method="GET">
+                            <form action="/delete/{{expense.ID}}" method="GET">
                                 <button name="ID" type="submit" value="DELETE"><i class="material-icons">delete</button>
                             </form>
                         </td>
@@ -106,64 +102,64 @@
             <h1>Analysis</h1>
             <!-- Table for Expenses by Month -->
             <h3>Expenses by Month <button id="byMonthButton" style="display: inline;" onclick="revealByMonth()">&#9660;</button></h3>
-                <table id="byMonthTable" style="display: none">
-                    <tr>
-                        <th> Month</th>
-                        <th> Amount </th>
-                    </tr>
-                    {% for (key, value) in byMonth.items() %}
-                    <tr>
-                        <td>{{ key }}: </td>
-                        <td>${{ value }}</td>
-                    </tr>
-                    {% endfor %}
-                </table>
-                <!-- Table for Expenses by Category -->
-                <h3>Expenses by Category <button id="byCategoryButton" style="display: inline;" onclick="revealByCategory()">&#9660;</button></h3>
-                    <table id="byCategoryTable" style="display: none">
-                        <tr>
-                            <th> Category</th>
-                            <th> Amount </th>
-                            <th> % </th>
-                        </tr>
-                        {% for (key, value) in byCategory.items() %}
+            <table id="byMonthTable" style="display: none">
+                <tr>
+                    <th> Month</th>
+                    <th> Amount </th>
+                </tr>
+                {% for (key, value) in byMonth.items() %}
+                <tr>
+                    <td>{{ key }}: </td>
+                    <td>${{ value }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            <!-- Table for Expenses by Category -->
+            <h3>Expenses by Category <button id="byCategoryButton" style="display: inline;" onclick="revealByCategory()">&#9660;</button></h3>
+            <table id="byCategoryTable" style="display: none">
+                <tr>
+                    <th> Category</th>
+                    <th> Amount </th>
+                    <th> % </th>
+                </tr>
+                {% for (key, value) in byCategory.items() %}
 
-                        <tr>
-                            <td>{{ key }}: </td>
-                            <td>${{ value[0] }}</td>
-                            <td> {{ value[1] }}%</td>
-                        </tr>
-                        {% endfor %}
-                    </table>
+                <tr>
+                    <td>{{ key }}: </td>
+                    <td>${{ value[0] }}</td>
+                    <td> {{ value[1] }}%</td>
+                </tr>
+                {% endfor %}
+            </table>
 
 
         </div>
     </div>
 </div>
 <script>
-function revealByMonth() {
-    var x = document.getElementById("byMonthTable");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-      document.getElementById("byMonthButton").innerHTML = "&#9650;"
-    } else {
-      x.style.display = "none";
-      document.getElementById("byMonthButton").innerHTML = "&#9660;"
-    }
-    
-  }
+    function revealByMonth() {
+        var x = document.getElementById("byMonthTable");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+            document.getElementById("byMonthButton").innerHTML = "&#9650;"
+        } else {
+            x.style.display = "none";
+            document.getElementById("byMonthButton").innerHTML = "&#9660;"
+        }
 
-function revealByCategory() {
-    var x = document.getElementById("byCategoryTable");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-      document.getElementById("byCategoryButton").innerHTML = "&#9650;"
-    } else {
-      x.style.display = "none";
-      document.getElementById("byCategoryButton").innerHTML = "&#9660;"
     }
-    
-  }
+
+    function revealByCategory() {
+        var x = document.getElementById("byCategoryTable");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+            document.getElementById("byCategoryButton").innerHTML = "&#9650;"
+        } else {
+            x.style.display = "none";
+            document.getElementById("byCategoryButton").innerHTML = "&#9660;"
+        }
+
+    }
 </script>
 
 
