@@ -112,10 +112,10 @@ class Expense:
 
 
 ############################################
-if __name__ == "__main__":
-    Expense1 = Expense(1, "Food", 12, "2021-05-06")
-    Expense2 = Expense(2, "Clothes", 599.99, "2021-05-08")
+# if __name__ == "__main__":
+#     Expense1 = Expense(1, "Food", 12, "2021-05-06")
+#     Expense2 = Expense(2, "Clothes", 599.99, "2021-05-08")
 
-    print(Expense2.Date)
+#     print(Expense2.Date)
     
     

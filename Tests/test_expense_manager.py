@@ -2,6 +2,7 @@ import pytest
 from werkzeug.wrappers import ETagResponseMixin
 from Models.expense_manager import ExpenseManager
 from Models.expense import Expense
+from unittest.mock import patch, mock_open
 
 
 def test_attributes():
@@ -63,7 +64,6 @@ def test_del_expense():
     with pytest.raises(KeyError):
         assert manager._expenses[1]
         assert manager._expenses[2]
-
 
 
 def test_upd_expense():
@@ -128,6 +128,12 @@ def test_from_csv():
     # Checks if method exists
     assert hasattr(manager, "from_csv")
 
+    # Patch to read from a csv add expenses to EM
+    with patch('builtins.open', mock_open(read_data="ID,Category,Amount,Date\n1,Health,100.00,2021-05-15\n2,Food,20.00,2021-05-15")) as mock_file:        
+        manager.from_csv("test.csv")
+        assert manager._expenses[1].ID == 1
+        assert manager._expenses[2].Category == "Food"
+
 
 def test_to_csv():
     """
@@ -147,7 +153,11 @@ def test_read_largest_id():
 
     # Checks if method exists
     assert hasattr(manager, "read_largest_id")
-    
+
+    # Patch to open a csv to read largest id
+    with patch('builtins.open', mock_open(read_data="ID,Category,Amount,Date\n1,Health,100.00,2021-05-15\n2,Food,20.00,2021-05-15")) as mock_file:        
+        assert manager.read_largest_id("test.csv") == 2
+
 
 def test_by_month_expense():
     manager = ExpenseManager()

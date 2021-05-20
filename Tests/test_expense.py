@@ -101,3 +101,16 @@ def test_to_dict(expense):
     assert expense.to_dict()["Category"] == "school"
     assert expense.to_dict()["Amount"] == "200.00"
     assert expense.to_dict()["Date"] == date.today().strftime("%Y-%m-%d")
+
+
+def test_init_validation():
+    """
+    Tests validation in __init__
+    """
+    with pytest.raises(ValueError):
+        Expense("A", "school", 200)
+    with pytest.raises(ValueError):
+        Expense("A", 123, 200)
+    with pytest.raises(ValueError):
+        Expense("A", "school", "b")
+        
