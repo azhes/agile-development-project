@@ -4,22 +4,17 @@
 
 
 <div class="input_expense" id="subContainer">
-    <form action="http://localhost:5000/update/{{ID}}" method="POST">
+    <form action="/update/{{ID}}" method="POST">
         <h2 class="sectionHeading">Update Expense #{{ID}}</h2>
         <div class="notification" style="background-color: white; color: red; border-radius: 8px; margin-right: 2rem">
-            {% with messages = get_flashed_messages() %}
-                {% if messages %} 
-                    {% for message in messages %} 
-                        <div class="alert alert-warning alert-dismissable" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
+            {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+            <div class="alert alert-warning alert-dismissable" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> {{ message }}
             </div>
-            <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+            {% endfor %} {% endif %} {% endwith %}
+        </div>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <div id="radios">
             <input id="school" type="radio" name="category" value="School">
             <label class="radioLabel" for="school">School</label>
@@ -30,13 +25,13 @@
             <input id=health type="radio" name="category" value="Health">
             <label class="radioLabel" for="health">Health</label>
 
-            <input id= family type="radio" name="category" value="Family">
+            <input id=f amily type="radio" name="category" value="Family">
             <label class="radioLabel" for="family">Family</label>
-            
+
         </div>
         <br>
-        <input class="text-box" type="date" name="date", value={{date}}><br> <br>
-        <input class="text-box" name="amount", value={{amount}}><br> <br>
+        <input class="text-box" type="date" name="date" , value={{date}}><br> <br>
+        <input class="text-box" name="amount" , value={{amount}}><br> <br>
         <button name="button"><i class="material-icons">pets</i></button>
         <button id="cancelButton" name="button"><i class="material-icons">cancel</i></button>
     </form>
@@ -45,7 +40,7 @@
     </form> -->
 </div>
 
-<script>    
+<script>
     document.getElementById("{{category}}").checked = true;
 </script>
 
