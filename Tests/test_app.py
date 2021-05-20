@@ -2,9 +2,11 @@ import pytest
 from flask import Flask
 from app import app, expense
 
+
 @pytest.fixture
 def client():
     return app.test_client()
+
 
 def test_home_route(client):
     """ 

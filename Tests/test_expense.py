@@ -3,12 +3,16 @@ from Models.expense import Expense
 from datetime import date
 from datetime import datetime
 
-def test_attributes():
+
+@pytest.fixture
+def expense():
+    return Expense(1, "school", 200)
+
+
+def test_attributes(expense):
     """
     Tests if Expense class has the correct attributes and they are set correctly
     """
-    expense = Expense(1, "school", 200)
-
     # Checks if private attributes exist
     assert hasattr(expense, "_ID")
     assert hasattr(expense, "_Category")
@@ -22,12 +26,10 @@ def test_attributes():
     assert expense._Date == date.today()
 
 
-def test_properties():
+def test_properties(expense):
     """
     Tests for Expense class properties
     """
-    expense = Expense(1, "school", 200)
-
     # Checks if properties exist
     assert type(expense.__class__.ID) == property
     assert type(expense.__class__.Category) == property
@@ -42,18 +44,16 @@ def test_properties():
     assert expense.Category == "health"
 
     expense._Amount = 500
-    assert expense.Amount == 500   
+    assert expense.Amount == 500
 
     expense._Date = date.today()
     assert expense.Date == date.today()
 
 
-def test_create_from_dict():
+def test_create_from_dict(expense):
     """
     Tests for the create_from_dict method
     """
-    expense = Expense(1, "school", 200)
-
     # Checks if method exists
     assert hasattr(expense, "create_from_dict")
 
@@ -72,12 +72,10 @@ def test_create_from_dict():
     assert isinstance(expense_object, Expense)
 
 
-def test_get_serializable_field_names():
+def test_get_serializable_field_names(expense):
     """
     Tests for the get_serializable_field_names method
     """
-    expense = Expense(1, "school", 200)
-
     # Checks if method exists
     assert hasattr(expense, "get_serializable_field_names")
 
@@ -85,17 +83,21 @@ def test_get_serializable_field_names():
     assert expense.get_serializable_field_names() == ['ID', 'Category', 'Amount', 'Date']
 
     # Checks if return value is of correct type
-    assert type(expense.get_serializable_field_names()) == list 
+    assert type(expense.get_serializable_field_names()) == list
 
 
-def test_to_dict():
+def test_to_dict(expense):
     """
     Tests for the to_dict method
     """
-    expense = Expense(1, "school", 200)
-
     # Checks if method exists
     assert hasattr(expense, "to_dict")
 
     # Checks if return value is of correct type
     assert type(expense.to_dict()) == dict
+
+    # Check if returned dictionary is correct
+    assert expense.to_dict()["ID"] == 1
+    assert expense.to_dict()["Category"] == "school"
+    assert expense.to_dict()["Amount"] == "200.00"
+    assert expense.to_dict()["Date"] == date.today().strftime("%Y-%m-%d")
