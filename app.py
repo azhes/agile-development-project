@@ -1,5 +1,8 @@
 from flask import Flask, request, render_template, url_for, redirect, flash
 import csv
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np 
 from Models.expense import Expense
 from Models.expense_manager import ExpenseManager
 
@@ -95,9 +98,22 @@ def display_expense_by_category():
     :return: All expenses subtotal by category in last 12 months, with percentage
     :rtype: dict
     """
-    
+    df = pd.read_csv('Models/expense.csv')
+
+    newdata = df.groupby('Category')['Amount'].sum().to_frame().reset_index()
+
+    Family = newdata.loc[newdata['Category'] == 'Family', 'Amount'].to_numpy()[0]
+    Food = newdata.loc[newdata['Category'] == 'Food','Amount'].to_numpy()[0]
+    Health= newdata.loc[newdata['Category'] == 'Health','Amount'].to_numpy()[0]
+    School = newdata.loc[newdata['Category'] == 'School','Amount'].to_numpy()[0]
+
+    Labels = ['Family', 'Food', 'Health', 'School']
+    plt.pie([Family, Food, Health, School], labels = Labels)
+    plt.show()
+
     EM = ExpenseManager()
     EM.from_csv(expense_csv)
+
     return EM.by_category()
 
 
