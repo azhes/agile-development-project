@@ -1,10 +1,13 @@
 from flask import Flask, request, render_template, url_for, redirect, flash
 import csv
 import pandas as pd
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np 
 from Models.expense import Expense
 from Models.expense_manager import ExpenseManager
+import os
 
 
 app = Flask(__name__)
@@ -98,6 +101,10 @@ def display_expense_by_category():
     :return: All expenses subtotal by category in last 12 months, with percentage
     :rtype: dict
     """
+    piechart_file="static/expense_piechart.jpg"
+
+
+    # Render the piechart
     df = pd.read_csv('Models/expense.csv')
 
     newdata = df.groupby('Category')['Amount'].sum().to_frame().reset_index()
@@ -108,9 +115,14 @@ def display_expense_by_category():
     School = newdata.loc[newdata['Category'] == 'School','Amount'].to_numpy()[0]
 
     Labels = ['Family', 'Food', 'Health', 'School']
-    plt.pie([Family, Food, Health, School], labels = Labels)
-    plt.show()
+    plt.pie([Family, Food, Health, School], labels = Labels, autopct='%.2f%%')
+    
+    # plt.show()
+    os.remove(piechart_file)
+    plt.savefig(piechart_file)
 
+
+    # Display expenses by category
     EM = ExpenseManager()
     EM.from_csv(expense_csv)
 
