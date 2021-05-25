@@ -138,6 +138,15 @@ def test_to_csv():
     # Checks if method exists
     assert hasattr(manager, "to_csv")
 
+def test_override_to_csv():
+    """
+    Tests for the override_to_csv method
+    """
+    manager = ExpenseManager()
+
+    # Checks if method exists
+    assert hasattr(manager, "override_to_csv")
+
 
 def test_read_largest_id():
     """
@@ -150,6 +159,9 @@ def test_read_largest_id():
     
 
 def test_by_month_expense():
+    """
+    Tests for the by_month_expense method
+    """
     manager = ExpenseManager()
     Expense1 = Expense(1, "Food", 50, "2020-04-29")
     Expense2 = Expense(2, "School", 20, "2021-04-30")
@@ -171,6 +183,9 @@ def test_by_month_expense():
     assert manager.by_month_expense()["Jan"] == 150.8
 
 def test_by_category():
+    """
+    Tests for the by_category method
+    """
     manager = ExpenseManager()
     Expense1 = Expense(1, "Food", 50, "2020-04-29")
     Expense2 = Expense(2, "School", 20, "2021-04-30")
