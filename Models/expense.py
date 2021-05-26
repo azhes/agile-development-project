@@ -4,12 +4,9 @@ from datetime import datetime
 
 TODAY = date.today()
 
-# print("Today's date:", TODAY)
-# print(TODAY.month)
 
 class Expense:
     """ A class to represent an expense """
-
 
     @staticmethod
     def create_from_dict(dict_):
@@ -107,8 +104,6 @@ class Expense:
         :rtype: dict
         """
         return self.__dict__
-
-
 
 
 ############################################

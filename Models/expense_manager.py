@@ -1,5 +1,4 @@
 from Models.expense import Expense
-# from expense import Expense
 import csv
 from datetime import datetime, timedelta
 
@@ -69,7 +68,6 @@ class ExpenseManager:
         fields = Expense.get_serializable_field_names()
         with open(csv_file, "a", newline="") as f:
             writer = csv.DictWriter(f, fields)
-            # writer.writeheader()
             for expense in self._expenses.values():
                 writer.writerow(expense.to_dict())
 
@@ -196,6 +194,3 @@ if __name__ == "__main__":
 
     print(EM.get_expenses())    
     print(EM.read_largest_id("expense.csv"))
-
-    # EM.del_expense(2)
-    # print(EM.get_expenses())    
