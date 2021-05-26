@@ -1,0 +1,6 @@
+[run]
+omit =
+# This excludes the virtual environment files
+*/venv/*
+# This excludes the `tests` folder
+Tests/*
