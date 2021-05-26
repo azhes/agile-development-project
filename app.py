@@ -8,6 +8,7 @@ import numpy as np
 from Models.expense import Expense
 from Models.expense_manager import ExpenseManager
 import os
+from datetime import datetime
 
 
 app = Flask(__name__)
@@ -101,7 +102,7 @@ def display_expense_by_category():
     :return: All expenses subtotal by category in last 12 months, with percentage
     :rtype: dict
     """
-    piechart_file="static/expense_piechart.jpg"
+    piechart_file="expense_piechart-" + datetime.now().strftime('%Y-%m-%d-%H-%M-%S') + ".jpg"
 
 
     # Render the piechart
@@ -118,15 +119,23 @@ def display_expense_by_category():
     plt.pie([Family, Food, Health, School], labels = Labels, autopct='%.2f%%')
     
     # plt.show()
-    os.remove(piechart_file)
-    plt.savefig(piechart_file)
+    
+    # Remove previous .jpg files
+    mydir = "static"
+    for f in os.listdir(mydir):
+        if f.endswith(".jpg"):
+            os.remove(os.path.join(mydir, f))
+
+    # Save the latest piechart into jpg
+    plt.savefig("static/" + piechart_file)
+    plt.clf()
 
 
     # Display expenses by category
     EM = ExpenseManager()
     EM.from_csv(expense_csv)
 
-    return EM.by_category()
+    return EM.by_category(), piechart_file
 
 
 def delete_expense(ID):

@@ -122,7 +122,7 @@
                     <th> Amount </th>
                     <th> % </th>
                 </tr>
-                {% for (key, value) in byCategory.items() %}
+                {% for (key, value) in byCategory[0].items() %}
 
                 <tr>
                     <td>{{ key }}: </td>
@@ -132,7 +132,7 @@
                 {% endfor %}
             </table>
 
-            <img id="piechart" src="{{ url_for( 'static',filename='expense_piechart.jpg' ) }}">
+            <img id="piechart" style="display: none" src="{{ url_for( 'static',filename=byCategory[1] ) }}">
 
 
         </div>
@@ -153,11 +153,15 @@
 
     function revealByCategory() {
         var x = document.getElementById("byCategoryTable");
+        var x2 = document.getElementById("piechart");
+
         if (x.style.display === "none") {
             x.style.display = "block";
+            x2.style.display = "block";
             document.getElementById("byCategoryButton").innerHTML = "&#9650;"
         } else {
             x.style.display = "none";
+            x2.style.display = "none";
             document.getElementById("byCategoryButton").innerHTML = "&#9660;"
         }
 
