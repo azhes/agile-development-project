@@ -2,6 +2,7 @@ from flask import Flask, request, render_template, url_for, redirect, flash
 import csv
 from Models.expense import Expense
 from Models.expense_manager import ExpenseManager
+from time import strftime
 
 
 app = Flask(__name__)
@@ -233,8 +234,10 @@ def update(ID):
     # Save balance, budget
     add_to_csv(updated_balance, bal_dict["budget"])
 
+    monthly_expenses = display_expense_by_month()
+    current_month = strftime('%b')
     update_expense(ID, category, amount, date)
-    if updated_balance < float(bal_dict["budget"]):
+    if updated_balance < float(monthly_expenses[current_month]):
             flash("Your balance has exceeded your budget!")
 
     return redirect(url_for("index"))
@@ -269,9 +272,11 @@ def expense():
         EM.add_expense(expense)
         
         # Deduct expense amount from balance
+        monthly_expenses = display_expense_by_month()
+        current_month = strftime('%b')
         bal_dict=from_csv(balance_csv)
         bal_dict["balance"] = float(bal_dict["balance"]) - float(expense.Amount)
-        if bal_dict["balance"] < float(bal_dict["budget"]):
+        if bal_dict["balance"] < float(monthly_expenses[current_month]):
             flash("Your balance has exceeded your budget!")
         
         # Save expense
