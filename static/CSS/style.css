@@ -12,6 +12,7 @@ body {
     color: white;
 }
 
+
 /* .container{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -30,31 +31,33 @@ body {
     grid-area: right;
 } */
 
+
 /* .top_section{
     grid-area: top;
     display: grid;
     grid-template-columns: 1fr 2fr;
 } */
 
-#subContainer{
+#subContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background-color: rgba(184, 184, 184, 0.15); 
+    background-color: rgba(184, 184, 184, 0.15);
     border-radius: 25px;
     color: #fafafa;
     padding-left: 25px;
     margin-top: 10px;
 }
 
-
-.balance_container, .budget_container {
+.balance_container,
+.budget_container {
     text-align: center;
 }
 
-.left_section, .right_section{
-    background-color: rgba(177, 177, 177, 0.15); 
+.left_section,
+.right_section {
+    background-color: rgba(177, 177, 177, 0.15);
     border-radius: 25px;
-    margin: 50px 20px 0 20px;
+    margin: 50px 20px 0px 20px;
     color: #fafafa;
 }
 
@@ -67,14 +70,14 @@ body {
     height: 10rem;
 }
 
-button:hover{
+button:hover {
     color: #e9c46a;
 }
 
-button{
+button {
     border: none;
-    color:#DC4B19;
-    border-radius:4px;
+    color: #DC4B19;
+    border-radius: 4px;
 }
 
 #catInvert {
@@ -85,6 +88,7 @@ button{
     margin-left: 5rem;
     width: 23rem;
     border-radius: 25px;
+    padding-bottom: 25px;
 }
 
 #expenseTable {
@@ -96,8 +100,8 @@ button{
 
 .analysisSection {
     margin-left: 5rem;
+    padding-bottom: 25px;
 }
-
 
 #cancelButton {
     margin-left: 3.8rem;
@@ -109,95 +113,89 @@ button{
 }
 
 .text-box {
-    border-radius:4px;
+    border-radius: 4px;
     height: 1.5rem;
     margin-bottom: 0.8rem;
 }
 
-.text-box:focus{
-    background-color:#e9c46a ;
+.text-box:focus {
+    background-color: #e9c46a;
 }
 
 ::-webkit-scrollbar {
     width: 15px;
 }
-  
+
+
 /* Track */
+
 ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
+    background: #f1f1f1;
 }
-   
+
+
 /* Handle */
+
 ::-webkit-scrollbar-thumb {
-    background: #888; 
+    background: #888;
 }
-  
+
+
 /* Handle on hover */
+
 ::-webkit-scrollbar-thumb:hover {
-    background: #555; 
+    background: #555;
 }
 
-
-@media screen and (min-width: 480px){
-    .container{
+@media screen and (min-width: 480px) {
+    .container {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 3fr;
-        grid-template-areas: 
-        "top top"
-        "left right";
+        grid-template-areas: "top top" "left right";
     }
-
-    .left_section{
+    .left_section {
         grid-area: left;
     }
-    
-    .right_section{
+    .right_section {
         grid-area: right;
     }
-    
-    .top_section{
+    .top_section {
         grid-area: top;
         display: grid;
         grid-template-columns: 1fr 2fr;
     }
-
     .expenseSection {
         margin-left: 20rem;
         width: 23rem;
         border-radius: 25px;
     }
-
     .analysisSection {
         margin-left: 25rem;
     }
-
 }
 
-@media screen and (max-width: 479px){
-    #subContainer{
+@media screen and (max-width: 479px) {
+    #subContainer {
         padding-left: 8vw;
         width: 80vw;
     }
-    .left_section, .right_section, #mainContainer{
+    .left_section,
+    .right_section,
+    #mainContainer {
         margin: 5vh 5vw 0 5vw;
     }
-
-    .expenseSection, .analysisSection  {
+    .expenseSection,
+    .analysisSection {
         margin-left: 8vw;
         width: 80vw;
     }
-
-    #titleContainer{
+    #titleContainer {
         justify-content: center;
         margin-left: 0;
-        width:auto;
+        width: auto;
     }
-
     img {
-        width:80vw;
+        width: 80vw;
     }
-
 }
-
-
