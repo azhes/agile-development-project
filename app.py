@@ -107,16 +107,41 @@ def display_expense_by_category():
 
     # Render the piechart
     df = pd.read_csv('Models/expense.csv')
+    df_default = pd.DataFrame([
+            ["", "Family", 0.0, ""], 
+            ["", "Food", 0.0, ""],
+            ["", "Health", 0.0, ""],
+            ["", "School", 0.0, ""]
+    ], columns=["ID", "Category", "Amount", "Date"])
+
+    df = df.append(df_default, ignore_index=True)
 
     newdata = df.groupby('Category')['Amount'].sum().to_frame().reset_index()
-
+    
     Family = newdata.loc[newdata['Category'] == 'Family', 'Amount'].to_numpy()[0]
     Food = newdata.loc[newdata['Category'] == 'Food','Amount'].to_numpy()[0]
     Health= newdata.loc[newdata['Category'] == 'Health','Amount'].to_numpy()[0]
     School = newdata.loc[newdata['Category'] == 'School','Amount'].to_numpy()[0]
 
+    # Filter zero data
+    list_to_plot = [Family, Food, Health, School]
+    for item in list_to_plot:
+        if item == 0.0:
+            list_to_plot.remove(item)
+
+    # Filter zero data (labels)
     Labels = ['Family', 'Food', 'Health', 'School']
-    plt.pie([Family, Food, Health, School], labels = Labels, autopct='%.2f%%')
+    if Family == 0.0:
+        Labels.remove('Family')
+    if Food == 0.0:
+        Labels.remove('Food')
+    if Health == 0.0:
+        Labels.remove('Health')
+    if School == 0.0:
+        Labels.remove('School')
+
+    # Plot the piechart
+    plt.pie(list_to_plot, labels = Labels, autopct='%.2f%%')
     
     # plt.show()
     
