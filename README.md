@@ -3,6 +3,14 @@
 
 ![alt text](https://github.com/FriedSu/ForNotes/raw/master/images/S_Banner.png "Members of Scrumbledore's Army")
 
+Deployment
+==========
+
+We used Heroku as our deployment method, a link will be provided below for our app to use.
+
+https://sp3nd1-acit2911.herokuapp.com/
+
+
 Features
 ========
 These are the MVPs that our app contains.
