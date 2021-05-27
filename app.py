@@ -234,11 +234,13 @@ def update(ID):
     # Save balance, budget
     add_to_csv(updated_balance, bal_dict["budget"])
 
+    update_expense(ID, category, amount, date)
+    
     monthly_expenses = display_expense_by_month()
     current_month = strftime('%b')
-    update_expense(ID, category, amount, date)
-    if updated_balance < float(monthly_expenses[current_month]):
-            flash("Your balance has exceeded your budget!")
+    
+    if float(bal_dict["budget"]) < float(monthly_expenses[current_month]):
+            flash("Your current month expenses have exceeded your budget!")
 
     return redirect(url_for("index"))
 
@@ -271,16 +273,17 @@ def expense():
         # Add the expense into the Expense Manager
         EM.add_expense(expense)
         
+        # Save expense
+        EM.to_csv(expense_csv)
+
         # Deduct expense amount from balance
         monthly_expenses = display_expense_by_month()
         current_month = strftime('%b')
         bal_dict=from_csv(balance_csv)
         bal_dict["balance"] = float(bal_dict["balance"]) - float(expense.Amount)
-        if bal_dict["balance"] < float(monthly_expenses[current_month]):
-            flash("Your balance has exceeded your budget!")
-        
-        # Save expense
-        EM.to_csv(expense_csv)
+        if float(bal_dict["budget"]) < float(monthly_expenses[current_month]):
+            flash("Your current month expenses have exceeded your budget!")
+                
 
         # Save balance, budget
         add_to_csv(bal_dict["balance"], bal_dict["budget"])
