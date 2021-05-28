@@ -60,7 +60,9 @@ Analysis
 Notifications
 -------------
 
-1. The `Notification` feature alerts the user when they go over their budget
+1. The `Over Budget` feature notifies the user when they go over their budget
+2. The `Balance Change` feature notifies the user when they add or remove from their balance
+3. The `Expense Updated` feature notified the user when they add or remove an expense
 
 Datastoring to CSV File
 -----------------------
